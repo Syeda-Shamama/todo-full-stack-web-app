@@ -17,6 +17,7 @@ export default function TasksPage() {
   const [darkMode, setDarkMode] = useState(false);
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
   const [editingTaskData, setEditingTaskData] = useState<{ title: string; description: string } | null>(null);
+  const [filter, setFilter] = useState<'all' | 'pending' | 'completed'>('all');
 
   useEffect(() => {
     loadTasks();
@@ -102,6 +103,12 @@ export default function TasksPage() {
     }
   };
 
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'pending') return !task.completed;
+    if (filter === 'completed') return task.completed;
+    return true;
+  });
+
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
       <div className="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
@@ -150,13 +157,34 @@ export default function TasksPage() {
           </button>
         </form>
 
+        <div className="mb-6 flex justify-center gap-2 p-2 bg-gray-200 dark:bg-gray-800 rounded-full">
+          <button
+            onClick={() => setFilter('all')}
+            className={`px-4 py-2 rounded-full font-semibold transition-colors ${filter === 'all' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setFilter('pending')}
+            className={`px-4 py-2 rounded-full font-semibold transition-colors ${filter === 'pending' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
+          >
+            Pending
+          </button>
+          <button
+            onClick={() => setFilter('completed')}
+            className={`px-4 py-2 rounded-full font-semibold transition-colors ${filter === 'completed' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
+          >
+            Completed
+          </button>
+        </div>
+
         <div className="space-y-6">
-          {tasks.length === 0 ? (
+          {filteredTasks.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-xl text-gray-500 dark:text-gray-400">No tasks yet. Ready to be productive?</p>
+              <p className="text-xl text-gray-500 dark:text-gray-400">No tasks for this filter.</p>
             </div>
           ) : (
-            tasks.map((task) => (
+            filteredTasks.map((task) => (
               <div
                 key={task.id}
                 className={`p-5 rounded-xl shadow-md transition-all duration-300 flex items-start justify-between ${
