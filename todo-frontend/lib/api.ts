@@ -33,8 +33,8 @@ export const api = {
   createTask: (title: string, description: string) =>
     apiClient.post('/api/tasks', { title, description }),
   
-  updateTask: (id: number, data: any) =>
-    apiClient.put(`/api/tasks/${id}`, data),
+  updateTask: (id: number, title: string, description: string) =>
+    apiClient.put(`/api/tasks/${id}`, { title, description }),
   
   deleteTask: (id: number) =>
     apiClient.delete(`/api/tasks/${id}`),
