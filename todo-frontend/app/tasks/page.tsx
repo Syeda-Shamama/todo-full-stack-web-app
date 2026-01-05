@@ -83,7 +83,7 @@ export default function TasksPage() {
       <div className="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
         
         <header className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r' from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">
             My Tasks
           </h1>
           <div className="flex items-center gap-4">
@@ -119,7 +119,7 @@ export default function TasksPage() {
           />
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r' from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             <FiPlus />
             <span>Add Task</span>
