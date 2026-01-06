@@ -114,7 +114,7 @@ export default function TasksPage() {
       <div className="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
         
         <header className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r' from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">
             My Tasks
           </h1>
           <div className="flex items-center gap-4">
@@ -138,19 +138,19 @@ export default function TasksPage() {
             placeholder="What needs to be done?"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-4 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+            className="w-full p-4 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all shadow-sm hover:shadow-md"
             required
           />
           <textarea
             placeholder="Add a little more detail..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-4 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+            className="w-full p-4 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all shadow-sm hover:shadow-md"
             rows={3}
           />
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r' from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             <FiPlus />
             <span>Add Task</span>
@@ -160,19 +160,19 @@ export default function TasksPage() {
         <div className="mb-6 flex justify-center gap-2 p-2 bg-gray-200 dark:bg-gray-800 rounded-full">
           <button
             onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-full font-semibold transition-colors ${filter === 'all' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
+            className={`px-4 py-2 rounded-full font-semibold transition-colors shadow-sm hover:shadow-md ${filter === 'all' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
           >
             All
           </button>
           <button
             onClick={() => setFilter('pending')}
-            className={`px-4 py-2 rounded-full font-semibold transition-colors ${filter === 'pending' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
+            className={`px-4 py-2 rounded-full font-semibold transition-colors shadow-sm hover:shadow-md ${filter === 'pending' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
           >
             Pending
           </button>
           <button
             onClick={() => setFilter('completed')}
-            className={`px-4 py-2 rounded-full font-semibold transition-colors ${filter === 'completed' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
+            className={`px-4 py-2 rounded-full font-semibold transition-colors shadow-sm hover:shadow-md ${filter === 'completed' ? 'bg-blue-500 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700'}`}
           >
             Completed
           </button>
@@ -189,7 +189,7 @@ export default function TasksPage() {
                 key={task.id}
                 className={`p-5 rounded-xl shadow-md transition-all duration-300 flex items-start justify-between ${
                   task.completed 
-                    ? 'bg-white/60 dark:bg-gray-800/60' 
+                    ? 'bg-gray-200 dark:bg-gray-700 grayscale' // More distinct background and grayscale
                     : 'bg-white dark:bg-gray-800'
                 }`}
               >
@@ -199,12 +199,12 @@ export default function TasksPage() {
                       type="text"
                       value={editingTaskData?.title || ''}
                       onChange={(e) => setEditingTaskData({ ...editingTaskData!, title: e.target.value })}
-                      className="w-full p-2 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                      className="w-full p-2 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all shadow-sm hover:shadow-md"
                     />
                     <textarea
                       value={editingTaskData?.description || ''}
                       onChange={(e) => setEditingTaskData({ ...editingTaskData!, description: e.target.value })}
-                      className="w-full p-2 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                      className="w-full p-2 bg-gray-100 dark:bg-gray-700 border-2 border-transparent rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all shadow-sm hover:shadow-md"
                       rows={3}
                     />
                   </div>
@@ -212,7 +212,7 @@ export default function TasksPage() {
                   <div className="flex-1">
                     <h3 className={`font-bold text-xl transition-colors ${
                         task.completed 
-                          ? 'line-through text-gray-400 dark:text-gray-500' 
+                          ? 'line-through text-gray-500 dark:text-gray-600' // Adjusted text color for completed tasks
                           : 'text-gray-800 dark:text-gray-200'
                       }`}
                     >
@@ -227,13 +227,13 @@ export default function TasksPage() {
                     <>
                       <button
                         onClick={() => handleUpdate(task.id)}
-                        className="p-3 rounded-full text-white bg-blue-500 hover:bg-blue-600 transition-all duration-300 transform hover:scale-110"
+                        className="p-3 rounded-full text-white bg-blue-500 hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         <FiSave />
                       </button>
                       <button
                         onClick={handleCancelEdit}
-                        className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 transition-all duration-300 transform hover:scale-110"
+                        className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         <FiX />
                       </button>
@@ -242,7 +242,7 @@ export default function TasksPage() {
                     <>
                       <button
                         onClick={() => handleToggle(task.id, task.completed)}
-                        className={`p-3 rounded-full text-white transition-all duration-300 transform hover:scale-110 ${
+                        className={`p-3 rounded-full text-white transition-all duration-300 shadow-md hover:shadow-lg ${
                           task.completed
                             ? 'bg-yellow-500 hover:bg-yellow-600'
                             : 'bg-green-500 hover:bg-green-600'
@@ -252,13 +252,13 @@ export default function TasksPage() {
                       </button>
                       <button
                         onClick={() => handleEdit(task)}
-                        className="p-3 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-all duration-300 transform hover:scale-110"
+                        className="p-3 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         <FiEdit />
                       </button>
                       <button
                         onClick={() => handleDelete(task.id)}
-                        className="p-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition-all duration-300 transform hover:scale-110"
+                        className="p-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         <FiTrash2 />
                       </button>
